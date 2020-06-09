@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import QRCode from 'react-native-qrcode-svg';
+import { Animated } from 'react-native';
 
 import {
   Container,
@@ -12,7 +13,11 @@ import {
   SignOutButtonText,
 } from './styles';
 
-const Menu: React.FC = ({ translateY }) => {
+interface Props {
+  translateY: Animated.Value;
+}
+
+const Menu: React.FC<Props> = ({ translateY }) => {
   return (
     <Container
       style={{

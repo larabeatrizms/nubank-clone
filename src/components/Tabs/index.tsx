@@ -1,9 +1,14 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { Animated } from 'react-native';
 
 import { Container, TabsContainer, TabItem, TabText } from './styles';
 
-const Tabs: React.FC = ({ translateY }) => {
+interface Props {
+  translateY: Animated.Value;
+}
+
+const Tabs: React.FC<Props> = ({ translateY }) => {
   return (
     <Container
       style={{

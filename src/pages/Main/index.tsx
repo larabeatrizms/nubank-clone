@@ -2,7 +2,11 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Animated } from 'react-native';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+import {
+  PanGestureHandler,
+  State,
+  PanGestureHandlerStateChangeEvent,
+} from 'react-native-gesture-handler';
 
 import {
   Container,
@@ -35,7 +39,7 @@ const Main: React.FC = () => {
     { useNativeDriver: true },
   );
 
-  function onHandlerStateChanged(event) {
+  function onHandlerStateChanged(event: PanGestureHandlerStateChangeEvent) {
     if (event.nativeEvent.oldState === State.ACTIVE) {
       let opened = false;
       const { translationY } = event.nativeEvent;

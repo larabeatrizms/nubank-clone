@@ -10,7 +10,23 @@ export const Code = styled.View`
   background: #fff;
   padding: 10px;
   align-self: center;
+  margin-bottom: 8px;
 `;
+
+export const Dados = styled.View`
+  flex-direction: row;
+  align-self: center;
+`;
+
+export const DadoTypeText = styled.Text`
+  color: #fff;
+  margin-right: 4px;
+`;
+export const UserInfoText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+`;
+
 export const Nav = styled.View`
   width: 100%;
   margin-top: 30px;

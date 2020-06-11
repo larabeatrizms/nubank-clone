@@ -6,6 +6,9 @@ import { Animated } from 'react-native';
 import {
   Container,
   Code,
+  Dados,
+  DadoTypeText,
+  UserInfoText,
   Nav,
   NavItem,
   NavText,
@@ -34,6 +37,21 @@ const Menu: React.FC<Props> = ({ translateY }) => {
           color="#8B10AE"
         />
       </Code>
+
+      <Dados>
+        <DadoTypeText>Banco</DadoTypeText>
+        <UserInfoText> 260 - Nu Pagamentos S.A</UserInfoText>
+      </Dados>
+
+      <Dados>
+        <DadoTypeText>Agência</DadoTypeText>
+        <UserInfoText> 0001</UserInfoText>
+      </Dados>
+
+      <Dados>
+        <DadoTypeText>Conta</DadoTypeText>
+        <UserInfoText> 634785634-3</UserInfoText>
+      </Dados>
 
       <Nav>
         <NavItem>

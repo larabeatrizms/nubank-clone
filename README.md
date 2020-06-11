@@ -44,6 +44,10 @@
 
 NuBank Clone é um projeto desenvolvido para estudar animações e interfaces mobile. Mesmo não fazendo o clone de todas as telas se pôde estudar de como animações mobile no React Native são feitas, além também de estudar as estilizações.
 
+### Desafios na interface
+
+Utilizei de ferramentas como o Animated do React Native para animações de forma Nativa sem perder a performance do app, o React Native Snap Carousel que é uma biblioteca para mexer com Flatlist ou Scrollview animadas, o desenvolvimento da aplicação está sendo de muito aprendizado. Esse é um projeto que mexe bastante com animação dentro do React Native.
+
 ## 🚀 Tecnologias
 
 Tecnologias que utilizei para desenvolver a aplicação:
@@ -56,6 +60,10 @@ Tecnologias que utilizei para desenvolver a aplicação:
 - [Styled Components](https://styled-components.com/)
 - [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/getting-started.html)
 - [React Native Qrcode Svg](https://github.com/awesomejerry/react-native-qrcode-svg#readme)
+- [React Native Snap Carousel](https://github.com/archriss/react-native-snap-carousel)
+
+#### De padronização no código
+
 - [Eslint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [EditorConfig](https://editorconfig.org/)

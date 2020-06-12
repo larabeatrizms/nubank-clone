@@ -36,7 +36,7 @@
 
 <p align="center">
   <a href="" rel="noopener">
-    <img height="500" alt="Layout"  src="https://i.gyazo.com/5d7ca3a137960b9ca0f6c593e02d9136.gif">
+    <img height="550" alt="Layout"  src="https://i.gyazo.com/3d224fdcb426cb1a9388dc65d5653521.gif">
   </a>
 </p>
 
@@ -46,7 +46,7 @@ NuBank Clone é um projeto desenvolvido para estudar animações e interfaces mo
 
 ### Desafios na interface
 
-Utilizei de ferramentas como o Animated do React Native para animações de forma Nativa sem perder a performance do app, o React Native Snap Carousel que é uma biblioteca para mexer com Flatlist ou Scrollview animadas, o desenvolvimento da aplicação está sendo de muito aprendizado. Esse é um projeto que mexe bastante com animação dentro do React Native.
+Utilizei ferramentas como o Animated do React Native para animações de forma Nativa sem perder a performance do app, o React Native Snap Carousel que é uma biblioteca para mexer com Flatlist ou Scrollview animadas, o desenvolvimento da aplicação está sendo de muito aprendizado. Esse é um projeto que mexe bastante com animação dentro do React Native.
 
 ## 🚀 Tecnologias
 

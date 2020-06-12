@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import { Animated, Dimensions } from 'react-native';
+import { Animated, Dimensions, View } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 
@@ -20,12 +20,23 @@ import {
   CardList,
   CardContainer,
   Card,
+  CardView,
+  CardContainerContent,
+  CardLabel,
+  Label,
   CardHeader,
+  HeaderTitle,
   CardContent,
   Title,
+  Detail,
+  DetailCard,
+  DetailNumberCard,
   Description,
+  CardContainerFooter,
   CardFooter,
   Annotation,
+  ButtonFooter,
+  ButtonFooterText,
   StyledPagination,
 } from './styles';
 
@@ -36,7 +47,34 @@ import Menu from '../../components/Menu';
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = SLIDER_WIDTH;
 
-const DATA = [1, 2, 3];
+const DATA = [
+  {
+    headerIcon: 'credit-card',
+    headerTitle: 'Cartão de crédito',
+    contentTitle: 'FATURA ATUAL',
+    contentText: 'R$ 563,93',
+    footerIcon: 'layers',
+    footerText:
+      'Compra mais recente em Ebank*Spotify no valor de R$ 26,90 hoje',
+  },
+  {
+    headerIcon: 'dollar-sign',
+    headerTitle: 'NuConta',
+    contentTitle: 'Saldo disponível',
+    contentText: 'R$ 563,93',
+    footerIcon: 'shopping-cart',
+    footerText: 'Boleto de R$ 1.016,36 pago 10 mar',
+  },
+  {
+    headerIcon: 'gift',
+    headerTitle: '',
+    contentTitle: 'Nubank Rewards',
+    contentText:
+      'Acumule pontos que nunca expiram e troque por passagens aéreas ou serviços que você realmente usa.',
+    footerIcon: '',
+    footerText: 'ATIVE O SEU REWARDS',
+  },
+];
 
 const Main: React.FC = () => {
   let offset = 0;
@@ -52,6 +90,10 @@ const Main: React.FC = () => {
     ],
     { useNativeDriver: true },
   );
+
+  // useEffect(() => {
+  //   Number(translateY) > 20 ? setMenuOpen(true) : setMenuOpen(false);
+  // }, [translateY]);
 
   function onHandlerStateChanged(event: PanGestureHandlerStateChangeEvent) {
     if (event.nativeEvent.oldState === State.ACTIVE) {
@@ -115,22 +157,112 @@ const Main: React.FC = () => {
                   simultaneousHandlers={panRef}>
                   <Carousel
                     data={DATA}
-                    renderItem={() => (
+                    renderItem={({ item }) => (
                       <Card>
-                        <CardHeader>
-                          <Icon name="attach-money" size={28} color="#666" />
-                          <Icon name="visibility-off" size={28} color="#666" />
-                        </CardHeader>
-                        <CardContent>
-                          <Title>Saldo disponível</Title>
-                          <Description>R$ {index}</Description>
-                        </CardContent>
-                        <CardFooter>
-                          <Annotation>
-                            Transferência de R$ 20,00 recebida de Diego Schell
-                            Fernandes hoje às 6:00h.
-                          </Annotation>
-                        </CardFooter>
+                        <CardView>
+                          <CardContainerContent>
+                            <CardHeader>
+                              <FeatherIcon
+                                name={item.headerIcon}
+                                size={24}
+                                color="#666"
+                              />
+                              <HeaderTitle>{item.headerTitle}</HeaderTitle>
+                              {item.headerIcon === 'dollar-sign' ? (
+                                <FeatherIcon
+                                  name="eye-off"
+                                  size={24}
+                                  color="#666"
+                                />
+                              ) : null}
+                            </CardHeader>
+                            <CardContent>
+                              {item.contentTitle === 'Nubank Rewards' ? (
+                                <View>
+                                  <Description
+                                    // eslint-disable-next-line react-native/no-inline-styles
+                                    style={{
+                                      textAlign: 'center',
+                                      marginBottom: 8,
+                                      fontSize: 22,
+                                      fontWeight: 'bold',
+                                      color: '#333',
+                                    }}>
+                                    {item.contentTitle}
+                                  </Description>
+                                  <Title style={{ textAlign: 'center' }}>
+                                    {item.contentText}
+                                  </Title>
+                                </View>
+                              ) : (
+                                <View>
+                                  <Title
+                                    // eslint-disable-next-line react-native/no-inline-styles
+                                    style={{
+                                      color:
+                                        item.contentTitle === 'FATURA ATUAL'
+                                          ? '#0fbdc8'
+                                          : '#999',
+                                    }}>
+                                    {item.contentTitle}
+                                  </Title>
+                                  <Description // eslint-disable-next-line react-native/no-inline-styles
+                                    style={{
+                                      color:
+                                        item.contentTitle === 'FATURA ATUAL'
+                                          ? '#0fbdc8'
+                                          : '#333',
+                                    }}>
+                                    {item.contentText}
+                                  </Description>
+                                  {item.contentTitle === 'FATURA ATUAL' ? (
+                                    <Detail>
+                                      <DetailCard>Limite disponível</DetailCard>
+                                      <DetailNumberCard>
+                                        R$ 290,54
+                                      </DetailNumberCard>
+                                    </Detail>
+                                  ) : null}
+                                </View>
+                              )}
+                            </CardContent>
+                          </CardContainerContent>
+                          {item.contentTitle === 'FATURA ATUAL' ? (
+                            <CardLabel>
+                              <Label color="#01ca37" />
+                              <Label color="orange" />
+                              <Label color="#0fbdc8" />
+                            </CardLabel>
+                          ) : null}
+                        </CardView>
+
+                        {item.contentTitle === 'Nubank Rewards' ? (
+                          <ButtonFooter>
+                            <ButtonFooterText>
+                              {item.footerText}
+                            </ButtonFooterText>
+                          </ButtonFooter>
+                        ) : (
+                          <CardContainerFooter>
+                            <CardFooter>
+                              <FeatherIcon
+                                name={item.footerIcon}
+                                size={24}
+                                color="#666"
+                                // eslint-disable-next-line react-native/no-inline-styles
+                                style={{ marginRight: 8 }}
+                              />
+                              <Annotation>{item.footerText}</Annotation>
+                              <FeatherIcon
+                                name="chevron-right"
+                                size={24}
+                                color="#999"
+                                // eslint-disable-next-line react-native/no-inline-styles
+                                style={{ marginRight: 8 }}
+                              />
+                            </CardFooter>
+                          </CardContainerFooter>
+                        )}
                       </Card>
                     )}
                     sliderWidth={SLIDER_WIDTH}
